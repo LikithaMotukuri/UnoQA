@@ -1,0 +1,150 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="CustomWorkflowDesigner.Activity1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:b="clr-namespace:Browser;assembly=WebAppMaster"
+ xmlns:d="clr-namespace:Dialog;assembly=Dialog"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:os="clr-namespace:OpenQA.Selenium;assembly=WebDriver"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="searchId" Type="InOutArgument(x:String)" />
+    <x:Property Name="contactInfo" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>CustomWorkflowDesigner.Activity1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities.Debugger</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>OpenQA.Selenium</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>WebDriver</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="This workflow opens Techm's mybeatplus website and retieves the contact information of the input Id supplied." sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="os:IWebDriver" Name="Wdriver" />
+    </Sequence.Variables>
+    <d:InputDialog Options="{x:Null}" sap2010:Annotation.AnnotationText="Prompts user to enter the USER ID to be searched" sap2010:WorkflowViewState.IdRef="InputDialog_1" Label="Enter Associate ID to get Contact Info" Result="[searchId]" Title="Please enter the search value" />
+    <b:OpenUrl DelayAfter="{x:Null}" DelayBefore="{x:Null}" TimeOutMinutes="{x:Null}" sap2010:Annotation.AnnotationText="Launch the MyBetaPlus Page" AutoClose="True" Browser="[Wdriver]" BrowserName="ie" ClearBrowserInstance="False" ClearCookies="False" sap2010:WorkflowViewState.IdRef="OpenUrl_1" Maximize="True" Url="https://mybeatplus.techmahindra.com/Pages/Home.aspx" />
+    <b:EnterInfo DelayAfter="{x:Null}" DelayBefore="{x:Null}" EnterJavaScript="{x:Null}" FrameElement="{x:Null}" NestedFrames="{x:Null}" Occurrence="{x:Null}" WebElement="{x:Null}" sap2010:Annotation.AnnotationText="The input provided by the USER is entered into search box" Clear="False" DefaultFrame="False" Element="ctl00_SearchBoxScriptWebPart1_csr_sbox" EnterText="[searchId]" FindBy="Id" FrameFindBy="Select" sap2010:WorkflowViewState.IdRef="EnterInfo_1" SendKeyStrokes="SelectKeyStroke" TabType="Select" WebBrowser="[Wdriver]" />
+    <b:ClickOn DelayAfter="{x:Null}" DelayBefore="{x:Null}" FrameElement="{x:Null}" NestedFrames="{x:Null}" Occurrence="{x:Null}" WebElement="{x:Null}" sap2010:Annotation.AnnotationText="Click on search icon" ClickType="Click" DefaultFrame="False" Element="ctl00_SearchBoxScriptWebPart1_csr_SearchLink" FindBy="Id" FrameFindBy="Select" sap2010:WorkflowViewState.IdRef="ClickOn_1" TabType="Select" WebBrowser="[Wdriver]" />
+    <b:SetBrowserWait sap2010:Annotation.AnnotationText="Wait till the browser loads" sap2010:WorkflowViewState.IdRef="SetBrowserWait_1" Seconds="10" WebBrowser="[Wdriver]" />
+    <b:ClickOn DelayAfter="{x:Null}" DelayBefore="{x:Null}" FrameElement="{x:Null}" NestedFrames="{x:Null}" Occurrence="{x:Null}" WebElement="{x:Null}" sap2010:Annotation.AnnotationText="Click on PEOPLE tab" ClickType="Click" DefaultFrame="False" Element="ctl00_ctl43_g_a6d137ae_1281_4f3c_8b89_5ce65c012618_SRCHNAVITEM" FindBy="Id" FrameFindBy="Select" sap2010:WorkflowViewState.IdRef="ClickOn_2" TabType="Select" WebBrowser="[Wdriver]" />
+    <Delay Duration="00:00:02" sap2010:WorkflowViewState.IdRef="Delay_1" />
+    <b:GetInfo FrameElement="{x:Null}" NestedFrames="{x:Null}" Occurrence="{x:Null}" WebElement="{x:Null}" sap2010:Annotation.AnnotationText="Collects all the info for the USER" DefaultFrame="False" Element="ContactInfo" FindBy="Id" FrameFindBy="Select" GetInfoBy="Value" sap2010:WorkflowViewState.IdRef="GetInfo_1" Info="[contactInfo]" TabType="Select" WebBrowser="[Wdriver]" />
+    <WriteLine sap2010:Annotation.AnnotationText="Writes the INFO to output  window of DS" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[contactInfo]" />
+    <d:Messagebox ChoosenButton="{x:Null}" sap2010:Annotation.AnnotationText="Displays the INFO on a message box" Button="Ok" Content="[contactInfo]" sap2010:WorkflowViewState.IdRef="Messagebox_1" Title="Contact Info" />
+    <sads:DebugSymbol.Symbol>dzVDOlxVc2Vyc1xNQTAwNDM0NTgyXERlc2t0b3BcUmV0cmlldmVDb250YWN0X0luZm8ueGFtbCA5A0gOAgEBPQU9lwICASc+BT72AgIBIz8FP5kEAgEdQAVApwMCARlBBUGwAQIBFUIFQrgDAgERQwVDTAIBD0QFRPwCAgEJRQVFoQECAQZGBUbdAQIBAj2yAT3aAQIBKz3iAT3uAQIBKT31AT2UAgIBKD6+Aj7zAgIBJj6vAT66AQIBJD/yAj/+AgIBIT+LBD+WBAIBHz+/Aj/nAgIBHkCZA0CkAwIBG0CBAkCvAgIBGkGiAUGtAQIBF0GSAUGWAQIBFkKqA0K1AwIBE0KAAkLAAgIBEkMVQx8CARBE7gJE+QICAQ1E0AFE3QECAQxEwgJE0QICAQpFjwFFngECAQdGhwFGlgECAQRGzAFG2gECAQM=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="210,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenUrl_1" sap:VirtualizedContainerService.HintSize="210,45">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EnterInfo_1" sap:VirtualizedContainerService.HintSize="210,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ClickOn_1" sap:VirtualizedContainerService.HintSize="210,45">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SetBrowserWait_1" sap:VirtualizedContainerService.HintSize="210,45">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ClickOn_2" sap:VirtualizedContainerService.HintSize="210,45">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="210,22" />
+      <sap2010:ViewStateData Id="GetInfo_1" sap:VirtualizedContainerService.HintSize="210,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="210,99">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Messagebox_1" sap:VirtualizedContainerService.HintSize="210,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="232,1108">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CustomWorkflowDesigner.Activity1_1" sap:VirtualizedContainerService.HintSize="272,1188" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
