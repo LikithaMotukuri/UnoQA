@@ -58,8 +58,8 @@
       <Variable x:TypeArguments="x:Object" Name="workbook" />
       <Variable x:TypeArguments="x:String" Name="DataTableOut" />
     </Sequence.Variables>
-    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="AddDataColumn with ColumnName---------" />
     <e:AddDataColumn DataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Adds DataColumn  to specified DataTable object using ColumnName" ColumnName="ID" DataTable="[DataTable]" sap2010:WorkflowViewState.IdRef="AddDataColumn_1" />
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="AddDataColumn with ColumnName---------" />
     <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Column Count: &quot;+DataTable.Columns.count.tostring]" />
     <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_16" Text="&#xA;AddDataColumn with DataColumn---------" />
     <Assign sap2010:Annotation.AnnotationText="Assigning column name to DataColumn Object" sap2010:WorkflowViewState.IdRef="Assign_7">
@@ -113,7 +113,7 @@
     <e:AddDataRow AddRow="{x:Null}" sap2010:Annotation.AnnotationText="Adds DataRow to DataTable object using input DataRow object" DataRow="[DataRow]" DataTable="[DataTable]" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
     <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[&quot;Rows Count: &quot;+DataTable.rows.count.tostring]" />
     <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="&#xA;OutputDataTable---------" />
-    <e:CreateOrOpenExcel sap2010:Annotation.AnnotationText="Creates excel if given excel file does not exist in specified path." sap2010:WorkflowViewState.IdRef="CreateOrOpenExcel_1" Path="D:\test.xlsx" WorkBook="[workbook]" />
+    <e:CreateOrOpenExcel sap2010:Annotation.AnnotationText="Creates excel if given excel file does not exist in specified path." CreateExcel="True" DisableAlert="False" sap2010:WorkflowViewState.IdRef="CreateOrOpenExcel_1" Path="D:\test.xlsx" RepairFile="False" WindowState="Maximize" WorkBook="[workbook]" />
     <e:WriteDataTableToExcel StartingCell="{x:Null}" sap2010:Annotation.AnnotationText="Write DataTable object into excel " DataTable="[DataTable]" sap2010:WorkflowViewState.IdRef="WriteDataTableToExcel_1" Workbook="[workbook]" WorksheetNumber="[1]" />
     <e:OutputDataTable sap2010:Annotation.AnnotationText="Gives entire DataTable object in string format." DataTable="[DataTable]" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Output="[DataTableOut]" />
     <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[DataTableOut.trim()]" />
@@ -134,11 +134,10 @@
     <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_23" Text="[&quot;Column Count: &quot;+DataTable.Columns.count.tostring+&quot;,&quot;+&quot;Row Count: &quot;+DataTable.rows.count.tostring]" />
     <e:SaveExcel sap2010:Annotation.AnnotationText="Saves excel using workbook object" sap2010:WorkflowViewState.IdRef="SaveExcel_1" book="[workbook]" />
     <e:CloseExcel sap2010:Annotation.AnnotationText="Closes excel." sap2010:WorkflowViewState.IdRef="CloseExcel_1" Workbook="[workbook]" />
-    <sads:DebugSymbol.Symbol>d0RDOlxVc2Vyc1xzazAwNDk3Mzc0XERlc2t0b3BcU2FtcGxlc1xTYW1wbGVzXFNhbXBsZXNcRXhjZWxcRXhjZWwueGFtbGY1A4oBDgIBAT0FPW8CAX4+BT7sAQIBej8FP4UBAgF4QAVAdAIBdkEFSA4CAXJJBUnrAQIBbUoFSqEBAgFrSwVSDgIBaFMFU6oBAgFmVAVUhQECAWRVBVVrAgFiVgVW/QECAV5XBVd/AgFcWAVfDgIBWGAFZw4CAVVoBW8OAgFScAVwbgIBUHEFceIBAgFLcgVygAECAUlzBXNlAgFHdAV05AECAUN1BXX9AQIBPXYFdtIBAgE4dwV3XgIBNXgFeHYCATN5BXnkAQIBL3oFeoABAgEtewV72gECASh8BXyAAQIBJn0FffYBAgEifgV+hgECASB/BX/sAQIBG4ABBYABhgECARmBAQWBAWUCAReCAQWCAYoBAgETgwEFgwGOAQIBD4QBBYQBygECAQ2FAQWFAaoBAgEKhgEFhgHKAQIBCIcBBYcBmgECAQWIAQWIAYwBAgECPUQ9bAIBfz6bAT6fAQIBfT6qAT63AQIBez9DP4IBAgF5QERAcQIBd0Y1Rk0CAXVDNkNCAgFzSakBSbYBAgFwSZABSZ4BAgFuSkRKngECAWxQLlA/AgFqTS9NUwIBaVNEU6cBAgFnVENUggECAWVVQ1VoAgFjVi1WVAIBYVa+AVbLAQIBX1dDV3wCAV1dMl1EAgFbWjNaPAIBWWUwZTgCAVdiMWJAAgFWbTBtOAIBVGoxakICAVNwRHBrAgFRcY0BcZgBAgFOcaMBcbABAgFMckNyfQIBSnNDc2ICAUh01QF04QECAUV0vQF0ywECAUR19QF1+gECAUJ12AF15AECAUB1hwF1lAECAT52vwF2zwECATt2dnaDAQIBOXdEd1sCATZ4RHhzAgE0edwBeeEBAgEyeZMBeaABAgEwekR6fQIBLnuCAXuNAQIBK3uYAXulAQIBKXxEfH0CASd9oQF9pgECASV9sQF9vgECASN+RH6DAQIBIX+nAX+0AQIBHn+OAX+cAQIBHIABRIABgwECARqBAUSBAWICARiCATeCAT0CARaCAUiCAVUCARSDAS2DAUQCARKDAU+DAVwCARCEAUSEAccBAgEOhQFnhQF0AgELhgFEhgHHAQIBCYcBiwGHAZcBAgEGiAF9iAGJAQIBAw==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dxtEOlxTYW1wbGVzXEV4Y2VsXEV4Y2VsLnhhbWxmNQOKAQ4CAQE9BT3sAQIBfD4FPm8CAXo/BT+FAQIBeEAFQHQCAXZBBUgOAgFySQVJ6wECAW1KBUqhAQIBa0sFUg4CAWhTBVOqAQIBZlQFVIUBAgFkVQVVawIBYlYFVv0BAgFeVwVXfwIBXFgFXw4CAVhgBWcOAgFVaAVvDgIBUnAFcG4CAVBxBXHiAQIBS3IFcoABAgFJcwVzZQIBR3QFdLYCAgFDdQV1/QECAT12BXbSAQIBOHcFd14CATV4BXh2AgEzeQV55AECAS96BXqAAQIBLXsFe9oBAgEofAV8gAECASZ9BX32AQIBIn4FfoYBAgEgfwV/7AECARuAAQWAAYYBAgEZgQEFgQFlAgEXggEFggGKAQIBE4MBBYMBjgECAQ+EAQWEAcoBAgENhQEFhQGqAQIBCoYBBYYBygECAQiHAQWHAZoBAgEFiAEFiAGMAQIBAj2bAT2fAQIBfz2qAT23AQIBfT5EPmwCAXs/Qz+CAQIBeUBEQHECAXdGNUZNAgF1QzZDQgIBc0mpAUm2AQIBcEmQAUmeAQIBbkpESp4BAgFsUC5QPwIBak0vTVMCAWlTRFOnAQIBZ1RDVIIBAgFlVUNVaAIBY1YtVlQCAWFWvgFWywECAV9XQ1d8AgFdXTJdRAIBW1ozWjwCAVllMGU4AgFXYjFiQAIBVm0wbTgCAVRqMWpCAgFTcERwawIBUXGNAXGYAQIBTnGjAXGwAQIBTHJDcn0CAUpzQ3NiAgFIdKcCdLMCAgFFdOUBdPMBAgFEdfUBdfoBAgFCddgBdeQBAgFAdYcBdZQBAgE+dr8Bds8BAgE7dnZ2gwECATl3RHdbAgE2eER4cwIBNHncAXnhAQIBMnmTAXmgAQIBMHpEen0CAS57ggF7jQECASt7mAF7pQECASl8RHx9AgEnfaEBfaYBAgElfbEBfb4BAgEjfkR+gwECASF/pwF/tAECAR5/jgF/nAECARyAAUSAAYMBAgEagQFEgQFiAgEYggE3ggE9AgEWggFIggFVAgEUgwEtgwFEAgESgwFPgwFcAgEQhAFEhAHHAQIBDoUBZ4UBdAIBC4YBRIYBxwECAQmHAYsBhwGXAQIBBogBfYgBiQECAQM=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="WriteLine_12" sap:VirtualizedContainerService.HintSize="242,61" />
       <sap2010:ViewStateData Id="AddDataColumn_1" sap:VirtualizedContainerService.HintSize="242,75">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -146,6 +145,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_12" sap:VirtualizedContainerService.HintSize="242,61" />
       <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="242,61" />
       <sap2010:ViewStateData Id="WriteLine_16" sap:VirtualizedContainerService.HintSize="242,64" />
       <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="242,98">
