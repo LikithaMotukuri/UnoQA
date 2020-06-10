@@ -1,0 +1,96 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="CustomWorkflowDesigner.Activity1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:e="clr-namespace:Excel;assembly=Excel"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="workbook" Type="InOutArgument(x:Object)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>CustomWorkflowDesigner.Activity1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities.Debugger</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.Office.Interop.Excel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Office.Interop.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="This workflow Creates pivot table for given excel sheet &#xA;&#xA;For executing this workflow please copy the datasheet.xlsx in some local path and provide  the same path in createorOpenExcel activity" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <e:CreateOrOpenExcel sap2010:Annotation.AnnotationText="Opens excel from given path. Make sure excel is present." sap2010:WorkflowViewState.IdRef="CreateOrOpenExcel_1" Path="C:\Program Files (x86)\TechM\UnoDesignerStudio\Samples\Excel\datasheet.xlsx" WorkBook="[workbook]" />
+    <e:CreatePivotTable ColumnLablesArea="{x:Null}" FilePath="{x:Null}" sap2010:Annotation.AnnotationText="Creates pivot table for given excel data using given inputs.&#xA;" CellEnd="E11" CellStart="A5" CellStartForPivotTable="A15" ConsolidationFunction="xlSum" sap2010:WorkflowViewState.IdRef="CreatePivotTable_5" ReportFilterArea="[{&quot;E1&quot;}]" RowLablesArea="[{&quot;A1&quot;,&quot;B1&quot;}]" SheetNumber="1" ValuesArea="[{&quot;C1&quot;}]" Workbook="[workbook]" />
+    <e:SaveExcel sap2010:Annotation.AnnotationText="Saves given excel" sap2010:WorkflowViewState.IdRef="SaveExcel_1" book="[workbook]" />
+    <sads:DebugSymbol.Symbol>d1hDOlxQcm9ncmFtIEZpbGVzICh4ODYpXFRlY2hNXFVub0Rlc2lnbmVyU3R1ZGlvXFNhbXBsZXNcRXhjZWxcRXhjZWxfQ3JlYXRlUGl2b3RUYWJsZS54YW1sDzgDPQ4CAQE5BTmYAgIBDzoFOtwDAgEFOwU7igECAQI5iQI5lQICARE5sgE5/wECARA6oAM6owMCAQ46zQM62QMCAQw64wE66AECAQs6twE6vAECAQo6xwE6ywECAQk68AI6kwMCAQg6zQI64QICAQc6rwM6wwMCAQY7ezuHAQIBAw==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="CreateOrOpenExcel_1" sap:VirtualizedContainerService.HintSize="200,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CreatePivotTable_5" sap:VirtualizedContainerService.HintSize="200,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SaveExcel_1" sap:VirtualizedContainerService.HintSize="200,45">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,497">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CustomWorkflowDesigner.Activity1_1" sap:VirtualizedContainerService.HintSize="262,617" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
